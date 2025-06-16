@@ -70,5 +70,10 @@ Router.get("/like-dislike/get-count/:postId", reactionController.getLikesDislike
 
 
 
+// Ping route for cold start check
+Router.get('/ping', (req, res) => {
+  res.status(200).send('Backend awake');
+});
+
 
 module.exports = Router;
