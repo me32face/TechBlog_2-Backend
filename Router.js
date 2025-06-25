@@ -8,6 +8,8 @@ const adminController = require("./Admin/AdminController");
 const commentController = require("./Comment/CommentController");
 const reactionController = require("./Posts/LikeDislikeController");
 const savedPostController = require("./Posts/SavedPostController");
+const aiController = require("./Posts/AIController");
+
 
 
 
@@ -74,6 +76,10 @@ Router.get("/like-dislike/get-count/:postId", reactionController.getLikesDislike
 Router.get('/ping', (req, res) => {
   res.status(200).send('Backend awake');
 });
+
+
+Router.post("/related-posts", aiController.getRelatedPosts);
+
 
 
 module.exports = Router;
