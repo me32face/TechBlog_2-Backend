@@ -1,6 +1,28 @@
 const axios = require("axios");
 const PostModel = require("./PostSchema");
 
+
+// In Backend/Posts/AIController.js
+exports.getSummary = (req, res) => {
+  const { content } = req.body;
+  axios.post(
+    'https://api-inference.huggingface.co/models/facebook/bart-large-cnn',
+    { inputs: content },
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.HF_API_KEY}` // Use .env on server safely
+      }
+    }
+  ).then(response => {
+    res.json(response.data);
+  }).catch(err => {
+    console.error("Summary API Error:", err.message);
+    res.status(500).json({ error: "Failed to fetch summary" });
+  });
+};
+
+
+
 exports.getRelatedPosts = (req, res) => {
   const { text, currentPostId } = req.body;
 

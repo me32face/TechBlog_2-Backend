@@ -78,7 +78,7 @@ Router.get('/ping', (req, res) => {
 });
 
 
-Router.post("/related-posts", aiController.getRelatedPosts);
+Router.post("/get-summary", aiController.getSummary);
 
 
 
