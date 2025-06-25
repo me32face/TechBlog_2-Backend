@@ -10,7 +10,7 @@ exports.getSummary = (req, res) => {
     { inputs: content },
     {
       headers: {
-        Authorization: `Bearer ${process.env.HF_API_KEY}` // Use .env on server safely
+        Authorization: `Bearer ${process.env.REACT_APP_HF_TOKEN}` // Use .env on server safely
       }
     }
   ).then(response => {
